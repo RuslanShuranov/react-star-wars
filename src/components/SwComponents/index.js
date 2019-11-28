@@ -2,7 +2,7 @@ import {
     PersonList,
     PlanetList,
     StarshipList
-} from './ItemLists'
+} from './Lists'
 
 import {
     PersonDetails,
