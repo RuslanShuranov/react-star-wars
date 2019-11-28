@@ -1,19 +1,7 @@
 import React, {Component} from 'react';
 
 import './ItemDetails.css';
-import SwapiService from '../../services/swapi-service';
-
-const Record = ({item, field, label}) => {
-    return (
-        <li className="list-group-item">
-            <span className="term">{label}</span>
-            <span>{item[field]}</span>
-        </li>
-    )
-}
-export {
-    Record
-}
+import SwapiService from '../../services/swapiService';
 
 export default class ItemDetails extends Component {
 
@@ -55,7 +43,7 @@ export default class ItemDetails extends Component {
             return <span>Select a person from a list</span>
         }
 
-        const {id, name, gender, birthYear, eyeColor} = item
+        const {name} = item
 
         return (
             <div className="person-details card">

@@ -1,63 +1,27 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import './ItemList.css';
-import SwapiService from '../../services/swapi-service';
-import ErrorIndicator from '../ErrorIndicator';
-import Spinner from '../Spinner';
 
-export default class ItemList extends Component {
+const ItemList = (props) => {
+    const {data, onItemSelected, children: renderLabel} = props
 
-    state = {
-        itemList: null
-    }
-
-    onError = (err) => {
-        this.setState({
-            error: true
-        })
-    }
-
-    componentDidMount() {
-
-        const {getData} = this.props
-
-        getData()
-            .then((itemList) => {
-                this.setState({
-                    itemList
-                })
-            })
-            .catch(this.onError)
-    }
-
-    renderItems(arr) {
-        return arr.map((item) => {
-            const {id} = item
-            const label = this.props.children(item)
-            return (
-                <li className="list-group-item"
-                    key={id}
-                    onClick={() => this.props.onPersonSelected(id)}>
-                    {label}
-                </li>
-            )
-        })
-    }
-
-    render() {
-        const {itemList, error} = this.state
-
-        if (!itemList) {
-            return <Spinner/>
-        }
-
-        const items = this.renderItems(itemList)
-        const errorIndicator = error ? <ErrorIndicator/> : null
+    const items = data.map((item) => {
+        const {id} = item
+        const label = renderLabel(item)
         return (
-            <ul className="item-list list-group">
-                {errorIndicator}
-                {items}
-            </ul>
-        );
-    }
+            <li className="list-group-item"
+                key={id}
+                onClick={() => onItemSelected(id)}>
+                {label}
+            </li>
+        )
+    })
+
+    return (
+        <ul className="item-list list-group">
+            {items}
+        </ul>
+    );
 }
+
+export default ItemList

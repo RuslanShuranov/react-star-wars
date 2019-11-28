@@ -5,8 +5,10 @@ import Header from '../Header';
 import './App.css';
 import Row from '../Row'
 import ItemDetails from '../ItemDetails'
-import SwapiService from '../../services/swapi-service'
-import {Record} from '../ItemDetails/ItemDetails'
+import SwapiService from '../../services/swapiService'
+import Record from '../Record'
+import PeoplePage from '../PeoplePage'
+import RandomPlanet from '../RandomPlanet'
 
 export default class App extends React.Component {
 
@@ -22,24 +24,23 @@ export default class App extends React.Component {
                 <Record label="Gender" field="gender"/>
                 <Record label="Eye color" field="eyeColor"/>
             </ItemDetails>
-                )
+        )
 
         const starshipDetails = (
             <ItemDetails itemId={12}
                          getData={getStarship}
                          getImageUrl={getStarhsipImage}>
-                <Record label="Model" field="model"/>
-                <Record label="Length" field="length"/>
-                <Record label="Cost" field="costInCredits"/>
+                <Record field="model" label="Model"/>
+                <Record field="length" label="Length"/>
+                <Record field="costInCredits" label="Cost"/>
             </ItemDetails>
         )
 
         return (
             <div className="container">
                 <Header/>
-                {/*<RandomPlanet/>*/}
-                {/*<PeoplePage/>*/}
-                <Row left={personDetails} right={starshipDetails}/>
+                <RandomPlanet/>
+                <PeoplePage personDetails={personDetails}/>
             </div>
         );
     }
