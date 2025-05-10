@@ -1,48 +1,37 @@
 import React from 'react'
-import SwapiService from '../../services/swapiService'
+import StarWarsDBService from '../../services/starWarsDBService'
 import Record from '../Record'
 import ItemDetails from '../ItemDetails'
 
-const swapiService = new SwapiService()
+const swapiService = new StarWarsDBService()
 
 const {
     getPerson,
     getPlanet,
-    getStarship,
-    getPersonImage,
-    getPlanetImage,
-    getStarhsipImage,
+    getStarship
 } = swapiService
 
 const PersonDetails = ({itemId}) => {
     return(
         <ItemDetails itemId={itemId}
-                     getData={getPerson}
-                     getImageUrl={getPersonImage}>
-            <Record label="Gender" field="gender"/>
-            <Record label="Eye color" field="eyeColor"/>
+                     getData={getPerson}>
+            <Record label="Description" field="description"/>
         </ItemDetails>
     )
 }
 const PlanetDetails = ({itemId}) => {
     return(
         <ItemDetails itemId={itemId}
-                     getData={getPlanet}
-                     getImageUrl={getPlanetImage}>
-            <Record label="Name" field="name"/>
-            <Record label="Population" field="population"/>
-            <Record label="Rotation period" field="rotationPeriod"/>
+                     getData={getPlanet}>
+            <Record label="Description" field="description"/>
         </ItemDetails>
     )
 }
 const StarshipDetails = ({itemId}) => {
     return(
         <ItemDetails itemId={itemId}
-                     getData={getStarship}
-                     getImageUrl={getStarhsipImage}>
-            <Record field="model" label="Model"/>
-            <Record field="length" label="Length"/>
-            <Record field="costInCredits" label="Cost"/>
+                     getData={getStarship}>
+            <Record label="Description" field="description"/>
         </ItemDetails>
     )
 }

@@ -1,11 +1,11 @@
 import React from 'react'
-import SwapiService from '../../services/swapiService'
+import StarWarsDBService from '../../services/starWarsDBService'
 import {withData} from '../HocHelper/WithData'
 import ItemList from '../ItemList'
 
-const swapiService = new SwapiService()
+const dataService = new StarWarsDBService()
 
-const {getPeople, getPlanets, getStarships} = swapiService
+const {getPeople, getPlanets, getStarships} = dataService
 
 const withChildFunction = (Wrapped, fn) => {
     return (props) => {

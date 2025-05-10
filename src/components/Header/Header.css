@@ -5,6 +5,11 @@
 
 .header ul li {
     list-style: none;
+    border-radius: 3px;
+}
+
+.header ul li a {
+    display: block;
     margin: 0;
     padding: .5rem 1rem;
     border-radius: 3px;
